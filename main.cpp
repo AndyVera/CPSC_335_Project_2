@@ -46,7 +46,7 @@ int golden_number_equation_2_and_3 (int first, int second){
   double product = 0;
 
   //Prints out the first 20 Fibonnaci numbers
-  cout << "\nEquation 1: \nPrints out the first 20 Fibonacci numbers\n";
+  cout << "\nEquation 2: \nPrints out the first 20 Fibonacci numbers\n";
   for (int i = 1; i <= 20; i++){
     first_component = pow((1 + sqrt(5)),i);
     second_component = pow((1 - sqrt(5)),i);
@@ -56,7 +56,7 @@ int golden_number_equation_2_and_3 (int first, int second){
   }
 
   //Prints out the Fibonacci term from the first number inputed
-  cout << "\n\nEquation 2: \nThe " << first << "th (the first number inputed) fibonnaci number is: ";
+  cout << "\n\nThe " << first << "th (the first number inputed) fibonnaci number is: ";
   first_component = pow((1 + sqrt(5)),first);
   second_component = pow((1 - sqrt(5)),first);
   third_component = pow(2.0, first) * sqrt(5);
@@ -64,7 +64,7 @@ int golden_number_equation_2_and_3 (int first, int second){
   cout << product << "\n";
 
   //Prints out the nth Fibonacci number using any of the previous Fibonacci numbers
-  cout << "The " << second - first << "th term after the " << first << "th term is: ";
+  cout << "The " << second << "th fibonnaci number is: ";
   double equation_2 = product * pow((1 + sqrt(5)) / 2, second - first );
   cout << equation_2 << "\n";
 
@@ -82,7 +82,7 @@ int golden_number_equation_2_and_3 (int first, int second){
     equation_3 = product * ((1 + sqrt(5)) / 2);
     cout << equation_3;
   }
-  cout << '\n';
+  cout << "\n\nThe " << second <<"th term is: " << equation_3 << '\n';
 
   double maxium_equation_2 = 0.0;
   double maxium_equation_3 = 0.0;
@@ -126,8 +126,23 @@ int golden_number_equation_2_and_3 (int first, int second){
 
   return 0;
 }
-
 //=========================================================================================
+
+//=========================This Function is for Problem 2=================================
+
+void largest_sum (int arr[]){
+  int b = 0;
+  int e = 1;
+  int sum
+
+  for(int i = 0; i < (sizeof(arr) - sizeof(arr[0])) - 1; i++){
+    for (int j = i + 1; i < (sizeof(arr) - sizeof(arr[0])); j++){
+
+    }
+  }
+
+
+}
 
 int main(int argc, char const *argv[]){
 
@@ -163,6 +178,8 @@ golden_number_equation_2_and_3(previous, calculating_up_to);
 //===============================================================================================
 
 //=============These lines of code are meant for Problem 2======================================
+int test_array_1 [8] = {-3, -5, 5, -1, -3, 2, 5, -6};
 
+largest_sum(test_array_1);
 
 }
