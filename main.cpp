@@ -2,7 +2,7 @@
 #include <string>
 #include <cstring>
 #include <cmath>
-
+#include <array>
 using namespace std;
 
 //===============Function is for Part A of Problem 1 ======================
@@ -46,7 +46,7 @@ int golden_number_equation_2_and_3 (int first, int second){
   double product = 0;
 
   //Prints out the first 20 Fibonnaci numbers
-  cout << "\nEquation 2: \nPrints out the first 20 Fibonacci numbers\n";
+  cout << "\n***Equation 2:***\nPrints out the first 20 Fibonacci numbers\n";
   for (int i = 1; i <= 20; i++){
     first_component = pow((1 + sqrt(5)),i);
     second_component = pow((1 - sqrt(5)),i);
@@ -69,7 +69,7 @@ int golden_number_equation_2_and_3 (int first, int second){
   cout << equation_2 << "\n";
 
   //Prints out Fibonacci numbers usign Equation 3
-  cout << "\nEquation 3:\nPrinting out the Fibonacci numbers\n";
+  cout << "\n***Equation 3:***\nPrinting out the Fibonacci numbers\n";
   double equation_3 = 0;
   cout << 0;
   for (int i  = 1; i < second; i++){
@@ -130,40 +130,60 @@ int golden_number_equation_2_and_3 (int first, int second){
 
 //=========================This Function is for Problem 2=================================
 
-void largest_sum (int arr[]){
+int calc_sum (int arr2 [], int start, int end){
+  int total = 0;
+  for(int i = start; i < end; i++){ total = total + arr2[i]; }
+  return total;
+}
+
+void largest_sum (int arr [] , int len_of_arr){
   int b = 0;
   int e = 1;
-  int sum
+  int sum_new = 0;
+  int sum_old = 0;
 
-  for(int i = 0; i < (sizeof(arr) - sizeof(arr[0])) - 1; i++){
-    for (int j = i + 1; i < (sizeof(arr) - sizeof(arr[0])); j++){
+  for(int i = 0; i <= len_of_arr - 1; i++ ){
+    for(int j = i + 1; j <= len_of_arr; j++){
+      //cout << "i = " << i << '\n';
+     //cout << "j = " << j << '\n';
 
+      sum_new = calc_sum(arr, i, j);
+      //cout << "Sum of the new is: " << sum_new << '\n';
+      sum_old = calc_sum(arr, b, e);
+      //cout << "Sum of the old is: " << sum_old << '\n';
+
+      if (sum_new > sum_old){
+        b = i;
+        e = j;
+      }
+      }
+    }
+
+    for (int l = b; l < e; l++){
+      cout << arr[l] << ", ";
     }
   }
-
-
-}
 
 int main(int argc, char const *argv[]){
 
 //==============This lines of code are meant for Part A of the Problem 1=====================
   int recursion_stops_at = 0;
   int current_ = 2;
-  cout << "\nWe are first doing Part A of Problem 1\n";
+  cout << "\n+++We are first doing Part A of Problem 1+++\n";
   do{
     cout << "Enter a positve integer to calculate the Fibonnaci numbers up to that number: ";
     cin >> recursion_stops_at;
   } while(recursion_stops_at < 1);
     cout << "It will calculate all the Fibonnaci numbers up this term: " << recursion_stops_at << "\n";
     fibonnaci_recursion(recursion_stops_at, current_);
-    cout << "\nAll digits up to the " << recursion_stops_at <<"th term has been printed out\n\n";
+    cout << "\nAll digits up to the " << recursion_stops_at <<"th term has been printed out\n\n=======================================================================\n";
 
 //============================================================================================
 
 //==============This lines of code are meant for Part B of the Problem 1=====================
 int previous = 0;
 int calculating_up_to = 0;
-cout << "\nWe are first doing Part B of Problem 1\n";
+cout << "\n+++We are first doing Part B of Problem 1+++\n";
 do{
   cout << "Enter a positve integer to calculate the Fibonnaci numbers up to that number: ";
   cin >> previous;
@@ -174,12 +194,43 @@ do{
   cin >> calculating_up_to;
 } while(calculating_up_to < 1 || calculating_up_to <= previous );
 golden_number_equation_2_and_3(previous, calculating_up_to);
-
+cout << "====================================================================================\n";
 //===============================================================================================
 
 //=============These lines of code are meant for Problem 2======================================
-int test_array_1 [8] = {-3, -5, 5, -1, -3, 2, 5, -6};
+cout << "\n\n+++Now Doing Problem 2 of Project 2+++\n";
+int length_of_test_array = 8;
+signed test_array [length_of_test_array] = {-3, -5, 5, -1, -3, 1, 5, -6};
 
-largest_sum(test_array_1);
+int length_of_sample_array_1 = 9;
+signed sample_array_1 [length_of_sample_array_1] = { 10, 2,-5, 1, 9, 0,-4, 2,-2 };
 
+int length_of_sample_array_2 = 6;
+signed sample_array_2 [length_of_sample_array_2] = {-7, 1, 8, 2, -3, 1};
+
+int length_of_sample_array_3 = 6;
+signed sample_array_3 [length_of_sample_array_3] = {9, 7, 2, 16,-22, 11};
+
+int length_of_sample_array_4 = 14;
+signed sample_array_4 [length_of_sample_array_4] = {6, 1, 9, -33, 7, 2, 9, 1, -3, 8, -2, 9, 12, -4};
+
+cout << "Largest Sum for Test Array is: (";
+largest_sum(test_array, length_of_test_array);
+cout << ")\n";
+
+cout << "Largest Sum for Sample Array 1 is: (";
+largest_sum(sample_array_1, length_of_sample_array_1);
+cout << ")\n";
+
+cout << "Largest Sum for Sample Array 2 is: (";
+largest_sum(sample_array_2, length_of_sample_array_2);
+cout << ")\n";
+
+cout << "Largest Sum for Sample Array 3 is: (";
+largest_sum(sample_array_3, length_of_sample_array_3);
+cout << ")\n";
+
+cout << "Largest Sum for Sample Array 4 is:";
+largest_sum(sample_array_4, length_of_sample_array_4);
+cout << ")\n";
 }
