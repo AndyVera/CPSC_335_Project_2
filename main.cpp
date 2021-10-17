@@ -28,8 +28,8 @@ int fibonnaci_recursion(int stop_term, int at, int first = 0, int second = 1)
           second = next_num;
           cout << ", " << next_num;
         }
-        at++;
-        fibonnaci_recursion(stop_term, at, first, second);
+
+        fibonnaci_recursion(stop_term, at + 1, first, second);
       }
   }
   return 0;
@@ -40,25 +40,25 @@ int fibonnaci_recursion(int stop_term, int at, int first = 0, int second = 1)
 
 int golden_number_equation_2_and_3 (int first, int second){
 
-  double first_component = 0;
-  double second_component = 0;
-  double third_component = 0;
-  double product = 0;
+  double first_component = 0.0;
+  double second_component = 0.0;
+  double third_component = 0.0;
+  double product = 0.0;
 
   //Prints out the first 20 Fibonnaci numbers
   cout << "\n***Equation 2:***\nPrints out the first 20 Fibonacci numbers\n";
   for (int i = 1; i <= 20; i++){
-    first_component = pow((1 + sqrt(5)),i);
-    second_component = pow((1 - sqrt(5)),i);
+    first_component = pow((1.0 + sqrt(5)),i);
+    second_component = pow((1.0 - sqrt(5)),i);
     third_component = pow(2.0, i) * sqrt(5);
     product = (first_component - second_component) / third_component;
     cout << product << ", ";
   }
 
   //Prints out the Fibonacci term from the first number inputed
-  cout << "\n\nThe " << first << "th (the first number inputed) fibonnaci number is: ";
-  first_component = pow((1 + sqrt(5)),first);
-  second_component = pow((1 - sqrt(5)),first);
+  cout << "\n\nThe " << first << "th fibonnaci number is: ";
+  first_component = pow((1.0 + sqrt(5)),first);
+  second_component = pow((1.0 - sqrt(5)),first);
   third_component = pow(2.0, first) * sqrt(5);
   product = (first_component - second_component) / third_component;
   cout << product << "\n";
@@ -184,21 +184,22 @@ int main(int argc, char const *argv[]){
 int previous = 0;
 int calculating_up_to = 0;
 cout << "\n+++We are first doing Part B of Problem 1+++\n";
-do{
-  cout << "Enter a positve integer to calculate the Fibonnaci numbers up to that number: ";
-  cin >> previous;
-} while(previous < 1);
 
 do{
-  cout << "Enter another postive integer greater than the first input which will calculate the nth Fibonnaci number after the first number: ";
+  cout << "Enter a positive integer which will calculate the Fibonacci number of that term: ";
   cin >> calculating_up_to;
 } while(calculating_up_to < 1 || calculating_up_to <= previous );
+
+do{
+  cout << "Enter another positive integer whos value is lesser than the previous number entered:  ";
+  cin >> previous;
+} while(previous < 1 || calculating_up_to <= previous);
 golden_number_equation_2_and_3(previous, calculating_up_to);
-cout << "====================================================================================\n";
+cout << "\n====================================================================================\n";
 //===============================================================================================
 
 //=============These lines of code are meant for Problem 2======================================
-cout << "\n\n+++Now Doing Problem 2 of Project 2+++\n";
+cout << "\n+++Now Doing Problem 2 of Project 2+++\n";
 int length_of_test_array = 8;
 signed test_array [length_of_test_array] = {-3, -5, 5, -1, -3, 1, 5, -6};
 
@@ -232,5 +233,5 @@ cout << ")\n";
 
 cout << "Largest Sum for Sample Array 4 is:";
 largest_sum(sample_array_4, length_of_sample_array_4);
-cout << ")\n";
+cout << ")\n\n=======================================================================\n\n ALL TASKS COMPLETED!!\n";
 }
